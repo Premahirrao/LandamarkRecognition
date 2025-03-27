@@ -63,10 +63,10 @@ class TfLiteLandmarkClassifier(
 
     private fun getOrientationFromRotation(rotation: Int): ImageProcessingOptions.Orientation {
         return when(rotation) {
-            android.view.Surface.ROTATION_0 -> ImageProcessingOptions.Orientation.RIGHT_TOP
+            android.view.Surface.ROTATION_270 -> ImageProcessingOptions.Orientation.BOTTOM_RIGHT
             android.view.Surface.ROTATION_90 -> ImageProcessingOptions.Orientation.TOP_LEFT
             android.view.Surface.ROTATION_180 -> ImageProcessingOptions.Orientation.RIGHT_BOTTOM
-            else -> ImageProcessingOptions.Orientation.BOTTOM_RIGHT
+            else -> ImageProcessingOptions.Orientation.RIGHT_TOP
 
         }
     }

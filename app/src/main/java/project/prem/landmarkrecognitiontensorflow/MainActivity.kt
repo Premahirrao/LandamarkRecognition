@@ -12,6 +12,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -68,29 +69,33 @@ class MainActivity : ComponentActivity() {
                     }
                 }
                 Box(
-                    modifier = Modifier
-                        .fillMaxSize()
-                ){
+                    modifier = Modifier.fillMaxSize()
+                ) {
+                    // Ensure CameraPreview is placed in the background
                     CameraPreview(controller, Modifier.fillMaxSize())
 
                     Column(
-                        modifier = Modifier.fillMaxSize()
-                            .align(Alignment.TopCenter)
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .background(MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.6f)) // Make it semi-transparent
+                            .align(Alignment.TopCenter) // Align on top
+                            .padding(8.dp)
                     ) {
                         classifications.forEach {
-                            Text(text = it.name,
+                            Text(
+                                text = it.name,
                                 modifier = Modifier
-                                    .fillMaxSize()
-                                    .background(MaterialTheme.colorScheme.primaryContainer)
+                                    .fillMaxWidth()
                                     .padding(8.dp),
                                 textAlign = TextAlign.Center,
                                 fontSize = 20.sp,
                                 color = MaterialTheme.colorScheme.primary
-                                )
+                            )
                         }
                     }
-
                 }
+
+
             }
         }
     }
